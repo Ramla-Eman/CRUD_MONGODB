@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-import mongoosePaginate from "mongoose-paginate-v2"
 
 // Define Schema
 const contactSchema = mongoose.Schema({
@@ -19,8 +18,6 @@ const contactSchema = mongoose.Schema({
     type: String
   }
 })
-
-contactSchema.plugin(mongoosePaginate)
 
 const contact = mongoose.model("Contact", contactSchema)
 

@@ -5,29 +5,8 @@ import mongoose from "mongoose"
 export const getContacts = async (req, res) => { 
   try{
 
-    const { page = 1, limit = 4} = req.query
-
-    const options = {
-      page : parseInt(page),
-      limit : parseInt(limit)
-    }
-    
-    const result =  await Contact.paginate({}, options)
-
-    // res.send(result)
-
-    res.render('home', { 
-        totalDocs: result.totalDocs,
-        limit: result.limit,
-        totalPages: result.totalPages,
-        currentPage: result.page,
-        counter: result.pagingCounter,
-        hasPrevPage: result.hasPrevPage,
-        hasNextPage: result.hasNextPage,
-        prevPage: result.prevPage,
-        nextPage: result.nextPage,
-        contacts: result.docs
-     }) 
+    const contacts = await Contact.find()
+    res.render('home', {contacts}) 
     
   }catch(error){
     res.render('500',{message: error})
