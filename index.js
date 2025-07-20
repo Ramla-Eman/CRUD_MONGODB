@@ -1,9 +1,11 @@
 import express from "express"
+import dotenv from "dotenv"
+dotenv.config()
 const app = express()
 import ContactRoutes from "./routes/contacts.routes.js"
 import { connectDB } from "./config/database.js"
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000
 
 // Database Connection
 connectDB()
